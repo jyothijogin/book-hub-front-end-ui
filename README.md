@@ -1,4 +1,11 @@
-# DetailHubUi
+# Book hub
+
+This is a front-end maven project developed using Angular and Typescipt. It provides :
+  - an option to list all books stored in the database.
+  - search bar to search based on title or genre of books.
+  - option to add a new book.
+  - option to update an existing book.
+  - option to delete a book.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
 
