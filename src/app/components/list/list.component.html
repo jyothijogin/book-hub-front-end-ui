@@ -1,0 +1,37 @@
+<html>
+<body>
+<div class="topnav">
+<div class="container" align="right">
+  <form>
+    <input type="text" placeholder="Search.." [(ngModel)] = "searchText" name="search" (keyup)="performFilter()">
+  </form>
+</div>
+</div>
+
+<div class="container">
+  <table class="table table-bordered table-inverse" width="100%">
+    <tr>
+      <th>Book Id</th>
+      <th>Title</th>
+      <th>Rating</th>
+      <th>Genre</th>
+    </tr>
+    <tr *ngFor="let book of filteredBooks | paginate: {itemsPerPage:10, currentPage:pageNo}">
+      <td>
+        <a [routerLink]="['/detail',book.book_id]"> {{book.book_id}} </a>
+      </td>
+      <td>
+        {{book.title}}
+      </td>
+      <td>
+        {{book.rating}}
+      </td>
+      <td>
+        {{book.genre}}
+      </td>
+    </tr>
+  </table>
+  <pagination-controls (pageChange)="pageNo=$event"> </pagination-controls>
+</div>
+</body>
+</html>

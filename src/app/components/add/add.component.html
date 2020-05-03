@@ -1,0 +1,74 @@
+<style>
+  .divider {
+    width: 10px;
+    height: auto;
+    display: inline-block;
+  }
+</style>
+
+
+<div class="container">
+  <form [formGroup]="bookForm" (ngSubmit)="submitRegistration()" novalidate>
+
+    <div *ngIf="validMessage != ''">
+      <h3 class="has-info">{{validMessage}}</h3>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-error' : bookForm.get('title').errors && (bookForm.get('title').touched || bookForm.get('title').dirty)}">
+      <label>Book Name</label><label class ="field-required-error"> * </label>
+      <input type="text" class="form-control" formControlName="title" [(ngModel)]="book.title" required autofocus />
+      <span class = "field-required-error" *ngIf="bookForm.get('title').errors && (bookForm.get('title').touched || bookForm.get('title').dirty)">
+        Title is required
+      </span>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-error' : bookForm.get('title').errors && (bookForm.get('title').touched || bookForm.get('title').dirty)}">
+      <label>Genre</label><label class ="field-required-error"> * </label>
+      <select class="form-control" formControlName="genre" [(ngModel)]="book.genre" required>
+        <option value="">Please select a genre</option>
+        <option *ngFor="let g of genre"
+                [value]="g">
+          {{g}}
+        </option>
+      </select>
+      <span class = "field-required-error" *ngIf="bookForm.get('genre').errors && (bookForm.get('genre').touched || bookForm.get('genre').dirty)">
+        Genre is required
+      </span>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-error' : bookForm.get('rating').errors && (bookForm.get('rating').touched || bookForm.get('rating').dirty)}">
+      <label>Rating</label><label class ="field-required-error"> * </label>
+      <input type="text" class="form-control" formControlName="rating" [(ngModel)]="book.rating" required/>
+      <span class = "field-required-error" *ngIf="bookForm.get('rating').errors && (bookForm.get('rating').touched || bookForm.get('rating').dirty)">
+        Rating is required
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input type="text" class="form-control" formControlName="description" [(ngModel)]="book.description" />
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-error' : bookForm.get('name').errors && (bookForm.get('name').touched || bookForm.get('name').dirty)}">
+      <label>Publisher</label><label class ="field-required-error"> * </label>
+      <input type="text" class="form-control" formControlName="name" [(ngModel)]="book.publisher.name" required/>
+      <span class = "field-required-error" *ngIf="bookForm.get('name').errors && (bookForm.get('name').touched || bookForm.get('name').dirty)">
+        Publisher is required
+      </span>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-error' : bookForm.get('author_name').errors && (bookForm.get('author_name').touched || bookForm.get('author_name').dirty)}">
+      <label>Author</label><label class ="field-required-error"> * </label>
+      <input type="text" class="form-control" formControlName="author_name" [(ngModel)]="book.authors.author_name" required/>
+      <span class = "field-required-error" *ngIf="bookForm.get('author_name').errors && (bookForm.get('author_name').touched || bookForm.get('author_name').dirty)">
+        Author is required
+      </span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!bookForm.valid">Save</button>
+
+    <div class="divider"></div>
+    <button type="button" class="btn btn-danger" (click)="goBack(this.idnum)">Cancel</button>
+
+  </form>
+</div>

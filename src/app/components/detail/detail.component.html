@@ -1,0 +1,35 @@
+<html>
+<body>
+<style>
+  .divider{
+    width:10px;
+    height:auto;
+    display:inline-block;
+  }
+</style>
+
+
+<div class="container">
+<a class="card flex-row flex-wrap">
+    <div class="card-header border-0">
+      <img src={{bookbyId?.image_url}} alt="Image here" width ="200" height="300" class="pull-left mr-2">
+    </div>
+    <div class="card-block px-2">
+      <h2 class="card-title">{{bookbyId?.title}}</h2>
+      <p class="card-text"><b>rating: {{bookbyId?.rating}}  genre: {{bookbyId?.genre}}</b></p>
+      <p class="card-text"><b>Author : {{author_name}}</b></p>
+       <p><b> Publisher : {{publisherName}}</b></p>
+      <p class="card-text">{{bookbyId?.description}}</p>
+      <br>
+    </div>
+
+    &nbsp;
+  <button type="button" class="btn btn-danger" (click)= "delete()">Delete</button>
+  <div class="divider"></div>
+  <button type="button" class="btn-primary" (click)="update(this.idnum)">Update</button>
+</a>
+</div>
+</body>
+</html>
+
+
